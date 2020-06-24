@@ -1,0 +1,9 @@
+mongo/
+redis/
+node_modules/
+config.js
+config.stripe.js
+config*
+*.swp
+*.broken
+build/
