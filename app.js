@@ -19,7 +19,6 @@ fastify.get("/", async (request, reply) => {
   }
   const table = "trimco.users"
   const resFromES = await ElasticQuery(query, table)
-  const workingRes = await workingFunction()
   reply.send({hello: "world", resFromES, workingRes})
 })
 
@@ -194,24 +193,24 @@ workingFunction = async () => {
   
 }
 
-  GetElasticUserById = async (id) => {
-    try {
-      if(typeof id !== 'undefined') {
-        let userQuery = {
-          "size": 10,
-          "query": {
-            "bool": {
-              "must": {"match": {"uid": id}}
-            }
+GetElasticUserById = async (id) => {
+  try {
+    if(typeof id !== 'undefined') {
+      let userQuery = {
+        "size": 10,
+        "query": {
+          "bool": {
+            "must": {"match": {"uid": id}}
           }
         }
-        const user = await ElasticQuery(userQuery, "trimco.users")
-        return user
-      } else {
-        throw("no id")
       }
-    } catch (e) {
-      console.log("GetElasticUserById error")
-      throw new Error(e)
+      const user = await ElasticQuery(userQuery, "trimco.users")
+      return user
+    } else {
+      throw("no id")
     }
+  } catch (e) {
+    console.log("GetElasticUserById error")
+    throw new Error(e)
   }
+}
