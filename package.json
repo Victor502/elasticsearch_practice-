@@ -9,7 +9,7 @@
   "author": "victor",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^2.15.0",
+    "fastify": "^2.15.1",
     "node-fetch": "^2.6.0"
   }
 }
